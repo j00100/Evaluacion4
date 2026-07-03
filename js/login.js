@@ -4,17 +4,19 @@ const regex_mail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 /*
 
-id = "btn-submit"
+id = "formLogin"
 
-id="floatingInput"
+id = "floatingInput"
 
-id="floatingPassword"
+id = "floatingPassword"
 
 */
 
-let boton_submit = document.getElementById("btn-submit");
+let btn_submit = document.getElementById("btn-submit");
 
-boton_submit.addEventListener('click', function(event){
+btn_submit.addEventListener('click', function(event){
+
+    event.preventDefault();
 
     console.log("Pulsaste el botton");
 
@@ -22,53 +24,69 @@ boton_submit.addEventListener('click', function(event){
     const form_pass = document.getElementById("floatingPassword").value;
     const errores = [];
 
+    document.getElementById("imgLogo").src = "../assets/brand/bootstrap-logo.svg";
+    document.getElementById("tAlerta").textContent = "";
+    document.getElementById("aError").classList.add("d-none");
+
     console.log(form_email);
     console.log(form_pass);
     
     if(form_email === ""){
 
-        console.log("El campo email es obligatorio")
+        document.getElementById("imgLogo").src = "../assets/brand/alert.jpg";
+        
+        document.getElementById("tAlerta").textContent = "El campo email es obligatorio";
+        
+        document.getElementById("aError").classList.remove("d-none");
+        
         errores.push("El campo email es obligatorio");
     
-    }
+    }else if(!regex_mail.test(form_email)){
 
-    if(form_pass === ""){
+        document.getElementById("imgLogo").src = "../assets/brand/alert.jpg";
+        
+        document.getElementById("tAlerta").textContent = "El mail debe tener el formato alguien@example.com";
+        
+        document.getElementById("aError").classList.remove("d-none");
 
-        console.log("El campo password es obligatorio");
-        errores.push("El campo password es obligatorio");
-
-    }
-
-    if(!regex_mail.test(form_email)){
-
-        console.log("El mail debe tener el formato alguien@example.com");
         errores.push("El mail debe tener el formato alguien@example.com");
 
-    }
-
-    if(form_email != email_usuario){
+    }else if(form_email != email_usuario){
         
-        console.log("El mail ingresado no coincide");
+        document.getElementById("imgLogo").src = "../assets/brand/alert.jpg";
+        
+        document.getElementById("tAlerta").textContent = "El mail ingresado no coincide";
+        
+        document.getElementById("aError").classList.remove("d-none");
+        
         errores.push("El mail ingresado no coincide");
 
-    }
-    if(form_pass != pass_usuario){
+    }else if(form_pass === ""){
 
-        console.log("El password ingresado no coincide");
+        document.getElementById("imgLogo").src = "../assets/brand/alert.jpg";
+        
+        document.getElementById("tAlerta").textContent = "El campo password es obligatorio";
+        
+        document.getElementById("aError").classList.remove("d-none");
+
+        errores.push("El campo password es obligatorio");
+
+    }else if(form_pass != pass_usuario){
+
+        document.getElementById("imgLogo").src = "../assets/brand/alert.jpg";
+        
+        document.getElementById("tAlerta").textContent = "El password ingresado no coincide";
+        
+        document.getElementById("aError").classList.remove("d-none");
+        
         errores.push("El password ingresado no coincide");
 
     }
 
-    if(errores.length() > 0){
+    if(errores.length === 0){
 
-        console.log("Tai tapao en errores");
-        //event.preventDefault();
-
-    
-    }else{
-
-        
-
+        //window.location.href = "";
+        console.log("Entre");
     }
 
 });
