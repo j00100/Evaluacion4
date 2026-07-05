@@ -33,7 +33,7 @@ btn_submit.addEventListener('click', function(event){
     
     if(form_email === ""){
 
-        document.getElementById("imgLogo").src = "../assets/brand/alert.jpg";
+        document.getElementById("imgLogo").src = "assets/brand/alert.jpg";
         
         document.getElementById("tAlerta").textContent = "El campo email es obligatorio";
         
@@ -43,7 +43,7 @@ btn_submit.addEventListener('click', function(event){
     
     }else if(!regex_mail.test(form_email)){
 
-        document.getElementById("imgLogo").src = "../assets/brand/alert.jpg";
+        document.getElementById("imgLogo").src = ".assets/brand/alert.jpg";
         
         document.getElementById("tAlerta").textContent = "El mail debe tener el formato alguien@example.com";
         
@@ -53,7 +53,7 @@ btn_submit.addEventListener('click', function(event){
 
     }else if(form_email != email_usuario){
         
-        document.getElementById("imgLogo").src = "../assets/brand/alert.jpg";
+        document.getElementById("imgLogo").src = "assets/brand/alert.jpg";
         
         document.getElementById("tAlerta").textContent = "El mail ingresado no coincide";
         
@@ -63,7 +63,7 @@ btn_submit.addEventListener('click', function(event){
 
     }else if(form_pass === ""){
 
-        document.getElementById("imgLogo").src = "../assets/brand/alert.jpg";
+        document.getElementById("imgLogo").src = "assets/brand/alert.jpg";
         
         document.getElementById("tAlerta").textContent = "El campo password es obligatorio";
         
@@ -73,7 +73,7 @@ btn_submit.addEventListener('click', function(event){
 
     }else if(form_pass != pass_usuario){
 
-        document.getElementById("imgLogo").src = "../assets/brand/alert.jpg";
+        document.getElementById("imgLogo").src = "assets/brand/alert.jpg";
         
         document.getElementById("tAlerta").textContent = "El password ingresado no coincide";
         
@@ -85,8 +85,7 @@ btn_submit.addEventListener('click', function(event){
 
     if(errores.length === 0){
 
-        //window.location.href = "";
-        console.log("Entre");
+        window.location.href = "dashboard.html";
     }
 
 });
